@@ -6,32 +6,33 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:37:47 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/18 18:55:09 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/10/18 20:59:58 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <unistd.h>
+#include <string.h>
 
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 
-void test_ft_strncmp()
+int test_ft_strncmp()
 {
 	/*Have same strings with greater n*/
 	if (ft_strncmp("Lepo je lepo.", "Lepo je lepo.", 14) != 0) return (1); //fail
 	//Have s2 shorter string
-	if (ft_strncmp("Lepo je lepo.", "Lepo i nije.", 14) != 5) return (2); //fail
+	if (ft_strncmp("Lepo je lepo.", "Lepo i nije.", 14) <= 0) return (2); //fail
 	//Smaller n
-	if (ft_strncmp(" Lepo je lepo", "Lepo je lepo.", 3) != 3) return (3); //fail
+	if (ft_strncmp(" Lepo je lepo", "Lepo je lepo.", 3) >= 0) return (3); //fail
 	//Different strings
-	if (ft_strncmp("Lepo", "Nije", 5) != 0) return (4); //fail
+	if (ft_strncmp("Lepo", "Nije", 5) >= 0) return (4); //fail
 	//Empty strings
 	if (ft_strncmp("", "", 3) != 0) return (5); //fail
 	//Special characters or null terminators
-	if (ft_strncmp("!\n", "\0") != 0) return (6);
+	if (ft_strncmp("!\n", "\0", 1) <= 0) return (6); //fail
 	//when n is zero
-	if (ft_strncmp("Leop je", "Lepo je", 0) != 0) return (7);
-	//
+	if (ft_strncmp("Leop je", "Lepo je", 0) != 0) return (7); //fail
+	//one string shorter but n limits comparison
+	if (ft_strncmp("Lepo je", "Lep", 3) != 0) return (8); //fail
 	return (0);
 }
 
@@ -41,7 +42,7 @@ int main()
 
 	if (result == 0)
 	{
-		printf("test_ft_strncmp PASSED\n");
+		printf("test_ft_strncmp PASSED!!!\n");
 	}
 	else
 	{
