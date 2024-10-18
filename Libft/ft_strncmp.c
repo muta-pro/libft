@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 01:17:54 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/18 17:38:34 by imutavdz         ###   ########.fr       */
+/*   Created: 2024/10/18 14:37:47 by imutavdz          #+#    #+#             */
+/*   Updated: 2024/10/18 18:55:48 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <string.h>
 
-size_t	ft_strlen(const char *s)
+#include <unsitd.h>
+
+int ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
 }
