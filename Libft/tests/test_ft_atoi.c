@@ -6,12 +6,13 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:19:34 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/14 19:15:13 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/10/19 18:01:43 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 int	ft_atoi(const char *str);
 
@@ -20,7 +21,7 @@ void	test_ft_atoi()
 	assert(ft_atoi("123") == 123);
 	assert(ft_atoi("-123") == -123);
 	assert(ft_atoi( "12 ") ==  12 );
-	assert(ft_atoi("--12") == 12);
+	assert(ft_atoi("--12") == 0);
 	assert(ft_atoi("as123") == 0);
 	assert(ft_atoi("123as") == 123);
 	assert(ft_atoi("000123") == 123);
