@@ -6,7 +6,7 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 22:08:02 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/19 00:21:08 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/10/22 22:56:36 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,17 @@ int test_ft_strlcpy()
 	//Null destination buffer
 	size_t len = ft_strlcpy(NULL, "Some string", sizeof(buffer));
 	assert(len = strlen("Some string"));
+
+	//Buffer overflow pervention
+	char long_src[150];
+	memset(long_src, 'A', sizeof(long_src) - 1);
+	long_src[sizeof(long_src) - 1] = '\0'; //create long src string
+	memset(buffer, 0, sizeof(buffer)); //clear the buffer
+	size_t result = ft_strlcpy(buffer, long_src, 10);
+	assert(result == strlen(long_src)); //check return value src_len
+	assert(strcmp(buffer, "AAAAAAAA") == 0); //check buffer with truncated string
 }
+
 int main()
 {
 	test_ft_strlcpy();
