@@ -14,6 +14,6 @@ $(SRCS): $(OBJS)
 %.o: %.c
 	$(CC) -c $(CFLAGS) $?
 clean : rm -f $(OBJS)
-fclean : rm -f $(SRCS)
+fclean : rm -f $(NAME)
 re : fclean all
 
