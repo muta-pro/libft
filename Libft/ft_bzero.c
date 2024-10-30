@@ -6,16 +6,15 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 23:08:36 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/24 21:00:14 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/10/28 15:53:42 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 //Modifies a portion of memory in place by setting bytes to zero
 //should not modify the memory outside the buffer - overflow
 //ARG: pointer to block of memory, num bytes to zero out
 //void *type(can point to any type of data)
 //unsigned char is 1byte positive
-#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

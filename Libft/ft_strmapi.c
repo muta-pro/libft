@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 22:08:32 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/22 22:57:03 by imutavdz         ###   ########.fr       */
+/*   Created: 2024/10/30 16:11:23 by imutavdz          #+#    #+#             */
+/*   Updated: 2024/10/30 18:03:07 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//is designed specifically for strings. 
-//It copies characters from one location to another 
-//until it encounters a null terminator (\0).
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-	int i;
-	size_t src_len;
+	unsigned int	i;
+	char			*dst;
 
-	src_len = ft_strlen(src);
-
-	if (src == NULL) //checks if the pointer is NULL
-		return (0);
-	if (dst[i] == NULL || size == 0)
-		return (src_len);
 	i = 0;
-	while (src[i] && i < (size - 1))
+	dst = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!dst)
+		return (NULL);
+	while (i < ft_strlen(s))
 	{
-		dst[i] = src[i];
+		dst[i] = (f)(i, s[i]);
 		i++;
 	}
 	dst[i] = '\0';
-	return (src_len);
+	return (dst);
 }
