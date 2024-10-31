@@ -6,7 +6,7 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:43:45 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/22 22:57:01 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:45:13 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*concatenates two strings, ensuring that it doesn’t exceed 
