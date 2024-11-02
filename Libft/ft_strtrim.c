@@ -6,11 +6,15 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:10:16 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/30 18:44:35 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/10/31 17:07:47 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-
+/*
+ * ft_strtrim: Removes leading and trailing characters from a string.
+ * Params: const char *s1 (string to trim), const char *set (characters to trim)
+ * Return: char* - pointer to trimmed string
+ */
 int	match_making(char c, const char *set);
 
 char	*ft_strtrim(const char *s1, const char *set)

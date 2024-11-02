@@ -6,12 +6,17 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:35:06 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/29 22:48:04 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/10/31 17:08:57 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 #include <assert.h>
+#include <stdlib.h>
 #include "libft.h"
+#include <limits.h>
+#ifndef SIZE_MAX
+#define SIZE_MAX ((size_t)-1)
+#endif
 #include <string.h>
 
 void *ft_calloc(size_t nmemb, size_t size);
@@ -23,12 +28,12 @@ void test_ft_calloc()
 	size_t size = sizeof(int);
 	int *arr = (int *)ft_calloc(nmemb, size);//want arr to be array of int(cast)
 	assert(arr != NULL);
-	for (size_t i = 0; i < nmemb; i++;)
+	for (size_t i = 0; i < nmemb; i++)
 		assert(arr[i] == 0); //each byte zeroed
 	free(arr);
 
 	//zero elements (nmemb is 0)
-	nememb = 0;
+	nmemb = 0;
 	size = sizeof(int);
 	arr = (int *)ft_calloc(nmemb, size);//create array of int
 	assert(arr == NULL || (nmemb == 0 && arr != NULL));//NULL pointer or unsuable
@@ -46,6 +51,7 @@ void test_ft_calloc()
 	size = SIZE_MAX;
 	arr = (int *)ft_calloc(nmemb, size);
 	assert(arr == NULL);//no alloc possible	
+	free(arr);
 }
 
 int main()

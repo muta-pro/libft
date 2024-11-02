@@ -6,11 +6,15 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:09:11 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/30 18:44:30 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/10/31 17:07:45 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-
+/*
+ * ft_substr: Extracts a substring from a string.
+ * Params: const char *s (source string), unsigned int start (start index), size_t len (substring length)
+ * Return: char* - pointer to the substring
+ */
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;

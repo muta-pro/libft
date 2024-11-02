@@ -9,7 +9,11 @@
 /*   Updated: 2024/10/31 14:55:48 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
+ * ft_tolower: Converts an uppercase letter to lowercase.
+ * Params: int c (character to convert)
+ * Return: int - lowercase character or original if not uppercase
+ */
 int	ft_tolower(int c)
 {
 	if (c > 64 && c < 91)
