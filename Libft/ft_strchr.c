@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 16:09:11 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/31 17:07:45 by imutavdz         ###   ########.fr       */
+/*   Created: 2024/10/14 21:59:00 by imutavdz          #+#    #+#             */
+/*   Updated: 2024/10/15 22:55:36 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+#include <stddef.h>
+
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-	char	*str;
+	int				i;
+	unsigned char	uc;
 
-	if (!s)
-		return (NULL);
-	if (start > ft_strlen(s))
-		return (ft_strdup(""));
-	if (len > ft_strlen(s + start))
-		len = ft_strlen(s + start);
-	str = ft_calloc(len + 1, sizeof(char));
-	if (!str)
-		return (NULL);
+	uc = (unsigned char)c;
 	i = 0;
-	while (i < len)
+	while (s[i] != '\0')
 	{
-		str[i] = s[start + i];
+		if (s[i] == uc)
+			return ((char *)&s[i]);
 		i++;
 	}
-	return (str);
+	if (uc == '\0')
+		return ((char *)&s[i]);
+	return (NULL);
 }

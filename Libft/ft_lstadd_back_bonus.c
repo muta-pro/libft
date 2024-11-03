@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-//This function appends a new node to the list’s end
+
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
 	if (new == NULL)
-		return (NULL);//if new node is null, no adding
-	if(*lst == NULL)//if list empty, set new as first
+		return ;
+	if (*lst == NULL)
 	{
 		*lst = new;
-		return (NULL);
+		return ;
 	}
-	last = *lst;//start from the head of the list
-	while (current->next ! NULL)//traverse to last node
+	last = *lst;
+	while (last->next != NULL)
 		last = last->next;
-	last->next = new;//set last node's next pointer to new
+	last->next = new;
 }
