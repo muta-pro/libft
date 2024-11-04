@@ -6,7 +6,7 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 23:07:53 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/24 20:59:45 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/11/03 21:01:34 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 //memcmp for two blocks of memory byte-by-byte at once

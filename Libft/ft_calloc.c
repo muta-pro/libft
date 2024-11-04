@@ -6,7 +6,7 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 00:19:09 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/31 13:53:59 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/11/03 20:57:31 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@
 //matric initialization to 0: no edges between nodes
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	total;
+	size_t	total;//memory allocation
 	void	*ptr;
 
-	if (nmemb != 0 && (nmemb * size) / nmemb != size)
+	if (nmemb != 0 && (nmemb * size) / nmemb != size)//int overlfow protection
 		return (NULL);
-	total = nmemb * size;
-	ptr = malloc(total);
-	if (ptr == NULL)
+	total = nmemb * size;//calc tot mem needed
+	ptr = malloc(total);//allocate memory
+	if (ptr == NULL)//allocation not successful
 		return (NULL);
-	ft_memset(ptr, 0, total);
-	return (ptr);
+	ft_memset(ptr, 0, total);//zeroing out memory
+	return (ptr);//* to zeroed memory, or NULL on failure allocarion
 }

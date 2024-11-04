@@ -6,7 +6,7 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:35:06 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/31 17:08:57 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/11/03 20:57:59 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -60,4 +60,3 @@ int main()
 	printf("All test passed, WIN_MAX!\n");
 	return (0);
 }
-

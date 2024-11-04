@@ -6,12 +6,13 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 21:59:00 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/15 22:55:36 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:23:58 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stddef.h>
-
+//Finds the first occurrence of a character in a string.
+//Params: const char *s (string), int c (character to find)
+//Return: char* - pointer to first occurrence or NULL if not found
 char	*ft_strchr(const char *s, int c)
 {
 	int				i;
