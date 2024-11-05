@@ -6,7 +6,7 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 13:04:43 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/11/04 17:46:04 by imutavdz         ###   ########.fr       */
+/*   Updated: 2024/11/04 20:28:23 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -65,27 +65,27 @@ static char	*next_word(const char *s, char c, size_t *let)//locates&extracts
 	size_t	start;
 	size_t	word_len;
 
-	while (s[*let] == c && s[*let] != '\0')
+	while (s[*let] == c && s[*let] != '\0')//skippin delimiters
 		(*let)++;
-	start = *let;
-	word_len = 0;
+	start = *let;//set to current position
+	word_len = 0;//init to count word's len
 	while (s[*let] != '\0' && s[*let] != c)
 	{
-		(*let)++;
-		word_len++;
+		(*let)++;//advances counting len
+		word_len++;//calculates the lenght of word
 	}
-	return (ft_substr(s, start, word_len));
+	return (ft_substr(s, start, word_len));//mem alloc and cpy wach word in cell
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	let;
-	size_t	word;
-	char	**strings;
+	size_t	let;//index tracker in s
+	size_t	word;//num words added to string
+	char	**strings;//array yo hold each split word
 
 	word = 0;
 	let = 0;
-	strings = malloc(sizeof(char *) * (count_words(s, c) + 1));
+	strings = malloc(sizeof(char *) * (count_words(s, c) + 1));//alloc mem for word pointers
 	if (!strings || !s)
 		return (NULL);
 	while (word < count_words(s, c))
