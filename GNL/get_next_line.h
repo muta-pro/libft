@@ -5,25 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 21:50:59 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/12/08 15:22:35 by imutavdz         ###   ########.fr       */
+/*   Created: 2024/12/15 17:33:03 by imutavdz          #+#    #+#             */
+/*   Updated: 2024/12/23 19:15:45 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-#endif
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
-//node of the linked list
-typedef struct	s_list
-{
-	char		*str_buf;
-	struct		s_list *next;
-}				t_list;
 
-void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_strchr(const char *s, int c);
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 3
+# endif
+
+typedef struct s_gnl
+{
+    int             fd;
+    char            *buffer;
+    struct s_gnl    *next;
+}               t_gnl;
+
+char    *get_next_line(int fd);
+char    *ft_strdup(const char *s);
+char    *ft_strchr(const char *s, int c);
+char    *ft_strndup(const char *s, size_t n);
+size_t  ft_strlen(const char *s);
+
 #endif
