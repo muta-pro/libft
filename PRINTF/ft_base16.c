@@ -6,49 +6,44 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 14:25:19 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/12/31 14:34:49 by imutavdz         ###   ########.fr       */
+/*   Updated: 2025/01/02 18:06:38 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <ft_printf.h>
-//for %h
-int ft_puthex(unsigned int n, int type)
-{
-	char *a;
+#include "ft_printf.h"
 
-	if (type == 'x')
-		a = "0123456789abcdef";
-	else
-		a = "0123456789ABCDEF";
-	return (ft_base16(n, a));
+int	ft_puthex(unsigned int n, char spec)
+{
+	if (spec == 'x')
+		return (ft_base16(n, "0123456789abcdef"));
+	return (ft_base16(n, "0123456789ABCDEF"));
 }
-//for &p
-int ft_putptr(void *arg)
-{
-	int chars_print;
-	char *a;
-	unsigned long arg2;
 
-	arg2 = (unsigned long)arg;
-	a = "0123456789abcdef";
+int	ft_putptr(void *p)
+{
+	int				chars_print;
+	unsigned long	a;
+
 	chars_print = 0;
-	chars_print += ft_putstr('0x');
-	chars_print += ft_base16(arg2, a);
+	if (!p)
+		return (write(1, "(nil)", 5));
+	a = (unsigned long)p;
+	chars_print += write(1, "0x", 2);
+	chars_print += ft_base16(a, "0123456789abcdef");
 	return (chars_print);
 }
 
-int ft_base16(unsigned long n, char *a)
+int	ft_base16(unsigned long n, char *base)
 {
-	int chars_print;
+	int	chars_print;
 
-	if (!n)
-		return (-1);
 	chars_print = 0;
 	if (n > 15)
 	{
-		chars_print += ft_base16(n / 16, a);
-		chars_print += ft_base16(n % 16, a);
+		chars_print += ft_base16(n / 16, base);
+		chars_print += ft_base16(n % 16, base);
 	}
 	else
-		chars_print += ft_putchar(a[n]);
+		chars_print += ft_putchar(base[n]);
 	return (chars_print);
 }
+

@@ -6,74 +6,69 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:33:37 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/12/31 14:34:47 by imutavdz         ###   ########.fr       */
+/*   Updated: 2025/01/02 17:34:35 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-//fot %c
-void	ft_putchar(char c, int fd)
-{
-	write (fd, &c, 1);
-}
-//for %s
-void	ft_putstr(char *s, int fd)
-{
-	int	chars_read;
+#include "ft_printf.h"
 
-	if (!*s)
-		return (-1);
-	if (s == NULL)
-		return (write(fd, "(null)", 6));
-	chars_read = 0;
-	while (s[chars_read])
+int	ft_putchar(char c)
+{
+	return (write (1, &c, 1));
+}
+
+int	ft_putstr(char *s)
+{
+	int	chars_print;
+
+	if (!s)
+		return (write(1, "(null)", 6));
+	chars_print = 0;
+	while (s[chars_print])
 	{
-		write (fd, &s[chars_read], 1);
-		chars_read++;
+		if (write (1, &s[chars_print], 1) == -1)
+			return (-1);
+		chars_print++;
 	}
-	return (chars_read);
+	return (chars_print);
 }
-//for %d and %i
-void	ft_putnbr_fd(int n, int fd)
-{
-	char	chars_read;
 
-	if (!n)
-		return (-1);
-	chars_read = 0;
+int	ft_putnbr(int n)
+{
+	char	chars_print;
+
+	chars_print = 0;
 	if (n == -2147483648)
+		return (write (1, "-2147483648", 11));
+	if (n < 0)
 	{
-		write (fd, "-2147483648", 11);
-		return ;
+		chars_print += ft_putchar('-');
+		if (chars_print == -1)
+			return (-1);
+		n = -n;
 	}
-	else if (n < 0)
+	if (n > 9)
 	{
-		chars_read += ft_putchar('-');
-		chars_read += ft_putnbr(-n);
-	}
-	else if (n > 9)
-	{
-		chars_read += ft_putnbr(n / 10, fd);
-		chars_read += ft_putnbr(n / % 10, fd);
+		chars_print += ft_putnbr(n / 10);
+		if (chars_print == -1)
+			return (-1);
+		chars_print += ft_putchar((n % 10) + '0');
 	}
 	else
-		chars_read += ft_putchar(n + '0');
+		chars_print += ft_putchar(n + '0');
+	return (chars_print);
 }
-//for %u
-int ft_putuns(unsigned int n)
-{
-	int chars_read;
 
-	if(!n)
-		return (-1);
-	chars_read = 0;
-	if (n > 0)
+int	ft_putuns(unsigned int n)
+{
+	int	chars_print;
+
+	chars_print = 0;
+	if (n > 9)
 	{
-		chars_read += ft_putnbr(n / 10);
-		chars_read += ft_putnbr(n % 10);
+		chars_print += ft_putuns(n / 10);
+		chars_print += ft_putuns(n % 10);
 	}
-	else if (n >= 0 && n < 10)
-		chars_read += ft_putnbr(n + '0');
-	if (chars_read < 0)
-		return (-1);
-	return (chars_read);
+	else
+		chars_print += ft_putchar(n + '0');
+	return (chars_print);
 }
