@@ -6,7 +6,7 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:32:53 by imutavdz          #+#    #+#             */
-/*   Updated: 2025/01/02 16:53:22 by imutavdz         ###   ########.fr       */
+/*   Updated: 2025/01/05 14:01:46 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -27,6 +27,8 @@ int	ft_printf(const char *fs, ...)
 			fs++;
 			if (*fs)
 				chars_print += handle_placeholder(*fs, args);
+			else
+				return (-1);//correction for handling % as last char
 		}
 		else if (ft_putchar(*fs) == -1)
 			return (-1);
