@@ -6,7 +6,7 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:32:53 by imutavdz          #+#    #+#             */
-/*   Updated: 2025/01/05 14:01:46 by imutavdz         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:12:58 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -59,5 +59,10 @@ int	handle_placeholder(char spec, va_list args)
 		chars_print += ft_puthex(va_arg(args, unsigned int), spec);
 	else if (spec == '%')
 		chars_print = ft_putchar('%');
+	else
+	{
+		chars_print += ft_putchar('%');
+		chars_print += ft_putchar(spec);//corr for handling if after % there is other char
+	}
 	return (chars_print);
 }

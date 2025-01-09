@@ -6,7 +6,7 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:33:37 by imutavdz          #+#    #+#             */
-/*   Updated: 2025/01/02 17:34:35 by imutavdz         ###   ########.fr       */
+/*   Updated: 2025/01/05 15:26:48 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -34,7 +34,7 @@ int	ft_putstr(char *s)
 
 int	ft_putnbr(int n)
 {
-	char	chars_print;
+	int	chars_print;//correction of data type
 
 	chars_print = 0;
 	if (n == -2147483648)
@@ -66,9 +66,13 @@ int	ft_putuns(unsigned int n)
 	if (n > 9)
 	{
 		chars_print += ft_putuns(n / 10);
+		if (chars_print == -1)
+			return (-1);
 		chars_print += ft_putuns(n % 10);
 	}
 	else
 		chars_print += ft_putchar(n + '0');
+	if (chars_print == -1)
+		return (-1);
 	return (chars_print);
 }
