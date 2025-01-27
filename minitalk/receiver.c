@@ -6,72 +6,51 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:58:44 by imutavdz          #+#    #+#             */
-/*   Updated: 2025/01/23 14:41:07 by imutavdz         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:51:53 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "signal.h"
 
-#define BUFFER_SIZE 1024
+void handler(int sig, siginfo_t *data, void *context)
+{
+	(void)context;
+	if (sig == SIGUSR1)
+		c |= (1 << (7 - bit));
+	bit++;
+	if (bit == 8)
+	{
+		if (c == '\0')
+		{
+			write(1, '\n', 1);
+			exit(0);
+		}
+		else
+		{
+			write(1, &c, 1);
+			c == 0;
+		}
+		bit++;
+	}
+	kill(info->si_pid, SIGUSR1);
+}
 
-static char g_char = 0;
-static int g_bits_received = 0;
 
-// void handle_signal(int signal, siginfo_t *info, void *more in )//decide what happens when specific signal arrives
-// {
-// 	static char g_char;
-// 	static int bit_count;
-
-// 	g_char = 0;
-// 	bit_count = 0;
-// 	g_char = g_char << 1;
-// 	if (signal == SIGUSR1)
-// 	{
-// 		g_char = g_char | 1;
-// 		printf("received 1\n");
-// 	}
-// 	else
-// 		printf("received 0\n");
-// 	bit_count++;
-// 	if (g_bits_received == 8)
-// 	{
-// 		if (g_char =='\0')
-// 		{
-// 			write(1, "\n", 1);
-// 			printf("received complete message\n");
-// 		}
-// 		else
-// 		{
-// 			write(1, &g_char, 1);
-// 			printf("received character: %c\n", g_char);
-// 		}
-// 		g_char = 0;
-// 		bit_count = 0;
-
-// 	}
-// }
 
 int main(void)
 {
 	struct sigaction sa;
+	sa.sa_handler = &handler;
+	sa.sa_flags = SA_RESTART | SA_SIGINFO
+	sigaction(SIGUSR1, &sa, NULL);
+	sigemptyset(&sa_mask);
+	sigaddset(&sa_mask, SIGUSR1);
+	sigaddset(&sa_mask, SIGUSR2);
 	pid_t pid;
 
 	pid = getpid();
-	printf("Server PID: %d\n", pid);
-	// sa.sa_handler = handle_signal;
-	// sa.sa_flags = 0;
-	// sigemptyset(&sa.sa_mask);
-	// if (sigaction(SIGUSR1, &sa, NULL) == -1)
-	// {
-	// 	write(2, "Error: no SIGUSR1 handler set up", 32);
-	// 	return (1);
-	// }
-	// if (sigaction(SIGUSR2, &sa, NULL) == -1)
-	// {
-	// 	write(2, "Error: no SIGUSR2 handler set up", 32);
-	// }
-	while (1) //wait for signals indefinetly
+	printf("SERVER PID: %d\n", pid);
+	while (1)
 		pause();
-		printf("Signal received and handled/n"); 
-
 	return (0);
 }
+
