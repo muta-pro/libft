@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal.h                                           :+:      :+:    :+:   */
+/*   test_printf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 14:05:54 by imutavdz          #+#    #+#             */
-/*   Updated: 2025/01/27 13:07:42 by imutavdz         ###   ########.fr       */
+/*   Created: 2024/12/30 15:03:49 by imutavdz          #+#    #+#             */
+/*   Updated: 2025/01/02 18:51:00 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef SIGNAL_H
-#define SIGNAL_H
-
-
+#include <assert.h>
 #include <stdio.h>
-#include <unistd.h>
-#include <signal.h>
-#include <stdlib.h>
-void Signal(int, void *, bool);
+#include "ft_printf.h"
 
-#endif
+int main()
+{
+	int result = ft_printf("The answer is %s\n", "yes");
+	int expected = printf("The answer is %s\n", "yes");
+	assert(result == expected);
+	return (0);
+}

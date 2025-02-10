@@ -6,7 +6,7 @@
 /*   By: imutavdz <imutavdz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 13:14:48 by imutavdz          #+#    #+#             */
-/*   Updated: 2024/10/31 17:58:55 by imutavdz         ###   ########.fr       */
+/*   Updated: 2025/02/03 05:35:35 by imutavdz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,6 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
+int		ft_printf(const char *fs, ...);
+char    *get_next_line(int fd);
 #endif
